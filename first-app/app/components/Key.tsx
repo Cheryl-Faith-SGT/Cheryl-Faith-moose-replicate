@@ -1,12 +1,136 @@
 "use client";
 
+import { useEffect, useRef } from "react";
 import "./key.css";
 import Image from "next/image";
 import Link from "next/link";
+import gsap from "gsap";
+import { ScrollTrigger } from "gsap/ScrollTrigger";
+
+gsap.registerPlugin(ScrollTrigger);
 
 export default function Key() {
+    const sectionRef = useRef<HTMLElement>(null);
+
+    useEffect(() => {
+        const ctx = gsap.context(() => {
+            const headerTl = gsap.timeline({
+                scrollTrigger: {
+                    trigger: ".key-header",
+                    start: "top 85%",
+                    toggleActions: "play reverse play reverse",
+                },
+            });
+
+            headerTl
+                .from(".key-badge", {
+                    y: 30,
+                    opacity: 0,
+                    duration: 0.5,
+                    ease: "power3.out",
+                })
+                .from(
+                    ".key-header h2 .word",
+                    {
+                        y: 35,
+                        opacity: 0,
+                        duration: 0.45,
+                        stagger: 0.07,
+                        ease: "power3.out",
+                    },
+                    "-=0.3"
+                );
+
+            const leftCardTl = gsap.timeline({
+                scrollTrigger: {
+                    trigger: ".key-card-left",
+                    start: "top 55%",
+                    end: "bottom 20%",
+                    toggleActions: "play reverse play reverse",
+                },
+            });
+
+            leftCardTl
+                .from(
+                    ".left-img-small",
+                    {
+                        rotation: -8,
+                        duration: 0.75,
+                        ease: "power3.out",
+                    },
+                    0
+                )
+                .from(
+                    ".left-img-large",
+                    {
+                        scale: 0,
+                        opacity: 0,
+                        transformOrigin: "center center",
+                        duration: 0.75,
+                        ease: "power3.out",
+                    },
+                    0
+                )
+                .from(
+                    ".floating-icon",
+                    {
+                        scale: 0,
+                        opacity: 0,
+                        left: "44%",
+                        top: "48%",
+                        duration: 0.75,
+                        ease: "power3.out",
+                    },
+                    0
+                );
+
+            gsap.from([".key-card-left", ".key-card-right"], {
+                y: 50,
+                opacity: 0,
+                duration: 0.7,
+                stagger: 0.15,
+                ease: "power3.out",
+                scrollTrigger: {
+                    trigger: ".key-grid",
+                    start: "top 82%",
+                    toggleActions: "play reverse play reverse",
+                },
+            });
+
+            gsap.from(".stack-img", {
+                y: -25,
+                opacity: 0,
+                scale: 0.95,
+                duration: 0.6,
+                stagger: 0.18,
+                ease: "power3.out",
+                scrollTrigger: {
+                    trigger: ".key-card-right",
+                    start: "top 65%",
+                    end: "bottom 20%",
+                    toggleActions: "play reverse play reverse",
+                },
+            });
+
+            gsap.from([".key-card-3", ".key-card-4"], {
+                y: 50,
+                opacity: 0,
+                duration: 0.7,
+                stagger: 0.15,
+                ease: "power3.out",
+                scrollTrigger: {
+                    trigger: ".key-grid-bottom",
+                    start: "top 85%",
+                    toggleActions: "play reverse play reverse",
+                },
+            });
+        }, sectionRef);
+
+        return () => ctx.revert();
+    }, []);
+
     return (
-        <section id="key" className="key-section">
+        <section id="key" ref={sectionRef} className="key-section">
             <div className="key-header">
                 <div className="key-badge">
                     <Image
@@ -19,8 +143,14 @@ export default function Key() {
                 </div>
 
                 <h2>
-                    Built for Real. <br />
-                    <span>Designed for You.</span>
+                    <span className="word">Built</span>{" "}
+                    <span className="word">for</span>{" "}
+                    <span className="word">Real.</span> <br />
+                    <span className="green-line">
+                        <span className="word">Designed</span>{" "}
+                        <span className="word">for</span>{" "}
+                        <span className="word">You.</span>
+                    </span>
                 </h2>
             </div>
 
@@ -49,55 +179,49 @@ export default function Key() {
 
                         <div className="floating-icon icon-top-left">
                             <Image
-                                src="https://placehold.co"
+                                src="/iconup-1.png"
                                 alt="Icon 1"
-                                width={22}
-                                height={22}
+                                fill
                                 unoptimized
                             />
                         </div>
                         <div className="floating-icon icon-top-center">
                             <Image
-                                src="https://placehold.co"
+                                src="/iconup-2.png"
                                 alt="Icon 2"
-                                width={22}
-                                height={22}
+                                fill
                                 unoptimized
                             />
                         </div>
                         <div className="floating-icon icon-top-right">
                             <Image
-                                src="https://placehold.co"
+                                src="/iconup-3.png"
                                 alt="Icon 3"
-                                width={22}
-                                height={22}
+                                fill
                                 unoptimized
                             />
                         </div>
                         <div className="floating-icon icon-bottom-left">
                             <Image
-                                src="https://placehold.co"
+                                src="/icondown-1.png"
                                 alt="Icon 4"
-                                width={22}
-                                height={22}
+                                fill
                                 unoptimized
                             />
                         </div>
                         <div className="floating-icon icon-bottom-center">
                             <Image
-                                src="https://placehold.co"
+                                src="/icondown-2.png"
                                 alt="Icon 5"
-                                width={22}
-                                height={22}
+                                fill
                                 unoptimized
                             />
                         </div>
                         <div className="floating-icon icon-bottom-right">
                             <Image
-                                src="https://placehold.co"
+                                src="/icondown-3.png"
                                 alt="Icon 6"
-                                width={22}
-                                height={22}
+                                fill
                                 unoptimized
                             />
                         </div>
@@ -135,6 +259,7 @@ export default function Key() {
                                 className="stack-img stack-img-1"
                             />
                             <Image
+
                                 src="/key-img-2.png"
                                 alt="Be Yourself 2"
                                 width={500}
@@ -158,7 +283,9 @@ export default function Key() {
                     <div className="card-3-text">
                         <h3>Connect for Real</h3>
                         <p>
-                            Go beyond likes and curated personas. Connect with real people and build genuine relationships based on trust, not illusion.
+                            Go beyond likes and curated personas. Connect with
+                            real people and build genuine relationships based
+                            on trust, not illusion.
                         </p>
                     </div>
 
@@ -166,7 +293,7 @@ export default function Key() {
                         <div className="card-3-img-back">
                             <Image
                                 src="/music-up.png"
-                                alt="Connection Back"
+                                alt="Back"
                                 width={320}
                                 height={210}
                                 className="img-natural"
@@ -175,7 +302,7 @@ export default function Key() {
                         <div className="card-3-img-front">
                             <Image
                                 src="/music.png"
-                                alt="Connection Front"
+                                alt="Front"
                                 width={260}
                                 height={170}
                                 className="img-natural"

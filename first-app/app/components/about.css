@@ -145,44 +145,45 @@
 }
 
 @media (max-width: 768px) {
-    .about-tagline p {
-        white-space: normal;
-        font-size: 1rem;
+    .about-section {
+        min-height: auto;
+        padding: 4.5rem 1.5rem;
+    }
+
+    .bubble {
+        display: none;
     }
 
     .gl-1,
     .gl-2 {
-        width: 45px;
-        flex-shrink: 0;
+        display: none;
     }
 
-    .bubble {
-        width: 90px;
-        height: 48px;
+    .about-tagline {
+        margin-top: 2rem;
     }
 
-    .bubble img {
-        width: 36px;
-        height: 36px;
+    .about-tagline p {
+        white-space: normal;
+        font-size: 1rem;
+        line-height: 1.5;
+        max-width: 250px;
     }
 
-    .bubble-1 {
-        top: 8%;
-        left: 6%;
+    .about-title br{
+        display: none;
     }
 
-    .bubble-2 {
-        top: 8%;
-        right: 6%;
+    .about-title{
+        font-size: 2rem;
     }
 
-    .bubble-3 {
-        bottom: 8%;
-        left: 6%;
+    .about-cta {
+        margin-top: 2.25rem;
+        transform: scale(0.9);
     }
 
-    .bubble-4 {
-        bottom: 8%;
-        right: 6%;
+    .about-cta:hover {
+        transform: scale(0.86);
     }
 }

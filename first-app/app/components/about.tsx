@@ -1,12 +1,56 @@
 "use client";
 
+import { useEffect, useRef } from "react";
 import Image from "next/image";
 import Link from "next/link";
+import gsap from "gsap";
+import { ScrollTrigger } from "gsap/ScrollTrigger";
 import "./about.css";
 
+gsap.registerPlugin(ScrollTrigger);
+
 export default function About() {
+    const sectionRef = useRef<HTMLElement>(null);
+
+    useEffect(() => {
+        const ctx = gsap.context(() => {
+            const tl = gsap.timeline({
+                scrollTrigger: {
+                    trigger: sectionRef.current,
+                    start: "top 75%",
+                    end: "bottom 20%",
+                    toggleActions: "play reverse play reverse",
+                },
+            });
+
+            tl.from(".bubble", {
+                scale: 0,
+                opacity: 0,
+                duration: 0.55,
+                stagger: 0.08,
+                ease: "back.out(1.7)",
+            })
+
+                .from(
+                    ".about-anim-text",
+                    {
+                        y: 40,
+                        opacity: 0,
+                        duration: 0.55,
+                        stagger: 0.1,
+                        ease: "power2.out",
+                    },
+                    "-=0.35"
+                );
+        }, sectionRef);
+
+        return () => ctx.revert();
+    }, []);
+
+
+
     return (
-        <section id="about" className="about-section">
+        <section id="about" ref={sectionRef} className="about-section">
             <div className="bubble bubble-1">
                 <Image
                     src="/ab1.png"
@@ -42,41 +86,44 @@ export default function About() {
                     height={82}
                 />
             </div>
+
             <div className="about-center">
-                <h1 className="about-title">
+                <h1 className="about-title about-anim-text">
                     The all-in-one social <br />
                     platform built on <br />
                     authenticity.
                 </h1>
 
-                <div className="about-tagline">
+                <div className="about-tagline about-anim-text">
                     <div className="gl-1"></div>
                     <p>Feel at ease with a social space you can trust.</p>
                     <div className="gl-2"></div>
                 </div>
 
-                <Link
-                    href="https://play.google.com/store/apps/details?id=com.moose_social&hl=id"
-                    className="about-cta"
-                >
-                    <span>Download Now</span>
+                <div className="about-cta-wrapper about-anim-text">
+                    <Link
+                        href="https://play.google.com/store/apps/details?id=com.moose_social&hl=id"
+                        className="about-cta"
+                    >
+                        <span>Download Now</span>
 
-                    <span className="cta-icon">
-                        <svg
-                            width="25"
-                            height="25"
-                            viewBox="0 0 24 24"
-                            fill="none"
-                            stroke="currentColor"
-                            strokeWidth="2.2"
-                            strokeLinecap="round"
-                            strokeLinejoin="round"
-                        >
-                            <line x1="7" y1="17" x2="17" y2="7" />
-                            <polyline points="7 7 17 7 17 17" />
-                        </svg>
-                    </span>
-                </Link>
+                        <span className="cta-icon">
+                            <svg
+                                width="25"
+                                height="25"
+                                viewBox="0 0 24 24"
+                                fill="none"
+                                stroke="currentColor"
+                                strokeWidth="2.2"
+                                strokeLinecap="round"
+                                strokeLinejoin="round"
+                            >
+                                <line x1="7" y1="17" x2="17" y2="7" />
+                                <polyline points="7 7 17 7 17 17" />
+                            </svg>
+                        </span>
+                    </Link>
+                </div>
             </div>
         </section>
     );

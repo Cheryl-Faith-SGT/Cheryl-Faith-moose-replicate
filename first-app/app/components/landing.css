@@ -1,5 +1,3 @@
-@import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital,wght@0,200..800;1,200..800&display=swap');
-
 :root {
     --color-primary: #00d776;
     --color-dark: #06140c;
@@ -17,6 +15,7 @@
     padding: 3rem 8vw 4rem;
     margin-top: 5rem;
     font-family: "Plus Jakarta Sans", sans-serif;
+    overflow-x: hidden;
 }
 
 .landing-content {
@@ -105,6 +104,11 @@
     transform: rotate(45deg);
 }
 
+.mobile-small-img,
+.mobile-only-text {
+    display: none;
+}
+
 .landing-right p {
     font-size: clamp(0.95rem, 1.25vw, 1.5rem);
     color: var(--color-dark);
@@ -132,7 +136,8 @@
 /* Sosial box */
 .social-box {
     position: relative;
-    justify-self: center;
+    margin-left: auto;
+    margin-right: auto;
     z-index: 15;
     width: 75%;
     min-height: 320px;
@@ -154,20 +159,21 @@
 
     -webkit-mask-image: linear-gradient(
             to right,
-            rgba(0, 0, 0, 0.15) 0%,
-            rgba(0, 0, 0, 1) 20%,
-            rgba(0, 0, 0, 1) 80%,
-            rgba(0, 0, 0, 0.15) 100%
+            rgba(0, 0, 0, 0.15) 5%,
+            rgba(0, 0, 0, 1) 30%,
+            rgba(0, 0, 0, 1) 70%,
+            rgba(0, 0, 0, 0.15) 95%,
+            transparent 100%
     );
     mask-image: linear-gradient(
             to right,
-            rgba(0, 0, 0, 0.15) 0%,
-            rgba(0, 0, 0, 1) 20%,
-            rgba(0, 0, 0, 1) 80%,
-            rgba(0, 0, 0, 0.15) 100%
+            rgba(0, 0, 0, 0.15) 5%,
+            rgba(0, 0, 0, 1) 30%,
+            rgba(0, 0, 0, 1) 70%,
+            rgba(0, 0, 0, 0.15) 95%,
+            transparent 100%
     );
 }
-
 
 .marquee-track {
     display: flex;
@@ -186,7 +192,7 @@
     flex-shrink: 0;
 }
 
-.social-box p:first-of-type {
+.social-box .social-desc {
     font-family: "Plus Jakarta Sans", sans-serif;
     font-size: 2rem;
     color: var(--color-bg-light);
@@ -194,7 +200,7 @@
     padding-top: 5.6rem;
 }
 
-.social-box p:last-of-type {
+.social-box .social-tags {
     font-family: "Plus Jakarta Sans", sans-serif;
     font-size: 1.4rem;
     color: var(--color-primary);
@@ -206,7 +212,7 @@
     gap: 1.5rem;
 }
 
-.social-box p:last-of-type span:not(:last-child)::after {
+.social-box .social-tags span:not(:last-child)::after {
     content: "|";
     margin-left: 2.1rem;
     color: var(--color-primary);
@@ -214,6 +220,11 @@
 
 .social-line {
     padding: 0;
+}
+
+.social-line img {
+    width: 100%;
+    height: auto;
 }
 
 @keyframes marqueeRight {
@@ -225,7 +236,8 @@
     }
 }
 
-@media (min-width: 768px) {
+/* --- DESKTOP (>= 1024px) --- */
+@media (min-width: 1024px) {
     .landing {
         padding-left: 11vw;
         padding-right: 11vw;
@@ -257,5 +269,148 @@
         margin: 8rem auto 0;
         min-height: 380px;
         border-radius: 3rem;
+    }
+}
+
+/* MOBILE & TABLET (<= 1023px) */
+@media (max-width: 1023px) {
+    .desktop-only-text {
+        display: none !important;
+    }
+
+    .mobile-only-text {
+        display: block;
+    }
+
+    .landing {
+        padding: 2rem 1.5rem 3.5rem;
+        margin-top: 4.5rem;
+    }
+
+    .landing-content {
+        align-items: center;
+        text-align: center;
+        gap: 1.75rem;
+    }
+
+    .landing-left {
+        align-items: center;
+        margin-left: 0;
+        width: 100%;
+    }
+
+    .landing-left h1 {
+        font-size: 2.85rem;
+        font-weight: 500;
+        color: var(--color-dark);
+        margin-top: 1rem;
+        margin-left: 0;
+        line-height: 1.15;
+    }
+
+    .landing-subtitle {
+        color: var(--color-dark);
+        justify-content: center;
+        margin-top: 0.25rem;
+    }
+
+    .landing-line {
+        display: none;
+    }
+
+    .landing-cta {
+        margin-left: 0;
+        margin-top: 2rem;
+        transform: scale(1.05);
+    }
+
+    .landing-cta:hover {
+        transform: scale(1);
+    }
+
+    .mobile-small-img {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        margin-top: 3.5rem;
+    }
+
+    .mobile-small-img img {
+        width: 70px;
+        height: 70px;
+        object-fit: cover;
+        border-radius: 1.25rem;
+    }
+
+    .landing-right {
+        width: 100%;
+    }
+
+    .landing-right p.mobile-only-text {
+        font-size: 1.25rem;
+        font-weight: 500;
+        line-height: 1.45;
+        margin-top: 0.5rem;
+        margin-right: 0;
+        color: var(--color-dark);
+    }
+
+    .landing-phone {
+        margin-top: 1.5rem;
+    }
+
+    .landing-phone img {
+        width: 320px;
+        margin-top: 0.5rem;
+    }
+
+    .social-box {
+        width: 100%;
+        min-height: auto;
+        margin-top: -3.5rem;
+        padding: 3.5rem 1.25rem 2.75rem;
+        border-radius: 2rem;
+    }
+
+    .marquee-track {
+        animation: marqueeRight 24s linear infinite;
+    }
+
+    .social-box h3 {
+        font-size: 4.5rem;
+    }
+
+    .social-box .social-desc.mobile-only-text {
+        font-size: 1.45rem;
+        font-weight: 500;
+        line-height: 1.4;
+        padding-top: 2.25rem;
+    }
+
+    .social-box .social-tags {
+        font-size: 1.05rem;
+        font-weight: 500;
+        padding: 1.75rem 0 0.75rem;
+        gap: 0.85rem;
+    }
+
+    .social-box .social-tags span {
+        display: inline-flex;
+        align-items: center;
+    }
+
+    .social-box .social-tags span:not(:last-child)::after {
+        display: none;
+    }
+
+    .social-box .social-tags span::before {
+        content: "";
+        display: inline-block;
+        width: 1.25rem;
+        height: 1.25rem;
+        border-radius: 50%;
+        background-color: #ffffff;
+        margin-right: 0.65rem;
+        flex-shrink: 0;
     }
 }
