@@ -1,0 +1,16 @@
+.social-box {
+    position: relative;
+    margin-left: auto;
+    margin-right: auto;
+    z-index: 15;
+    max-width: 1190px;
+    min-height: 320px;
+    margin-top: -0.6rem !important;
+    padding: 3rem 0;
+    background: linear-gradient(180deg, #000802 80%, #004511);
+    border-radius: 2.5rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    overflow: hidden;
+}

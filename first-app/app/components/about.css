@@ -97,11 +97,11 @@
     flex-shrink: 0;
 }
 
-.cta-icon svg {
+.cta-icon img {
     transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
-.about-cta:hover .cta-icon svg {
+.about-cta:hover .cta-icon img {
     transform: rotate(45deg);
 }
 

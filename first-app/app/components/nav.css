@@ -23,7 +23,7 @@
 
 .navbar {
     position: fixed;
-    top: 0;
+    top: 0.9em;
     left: 0;
     right: 0;
     z-index: 1000;
@@ -31,6 +31,7 @@
     transition: transform 0.35s cubic-bezier(0.4, 0, 0.2, 1);
     pointer-events: none;
     font-family: "Plus Jakarta Sans", sans-serif;
+    scale: 1.1;
 }
 
 .nav-visible {
@@ -190,7 +191,7 @@
 }
 
 .nav-cta:hover {
-    transform: scale(0.97);
+    transform: scale(0.95);
 }
 
 @media (min-width: 768px) {

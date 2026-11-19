@@ -85,8 +85,8 @@
 }
 
 .cta-icon {
-    width: 3.25rem;
-    height: 3.25rem;
+    width: 2.25rem;
+    height: 2.25rem;
     border-radius: var(--radius-pill);
     background-color: var(--color-black);
     color: var(--color-primary);
@@ -96,11 +96,11 @@
     flex-shrink: 0;
 }
 
-.cta-icon svg {
+.cta-icon img {
     transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
-.landing-cta:hover .cta-icon svg {
+.landing-cta:hover .cta-icon img {
     transform: rotate(45deg);
 }
 
@@ -141,7 +141,7 @@
     z-index: 15;
     width: 75%;
     min-height: 320px;
-    margin-top: -1rem;
+    margin-top: 6rem !important;
     padding: 3rem 0;
     background: linear-gradient(180deg, #000802 80%, #004511);
     border-radius: 2.5rem;
