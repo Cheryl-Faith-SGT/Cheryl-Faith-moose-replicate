@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
 import "./faq.css";
 import Image from "next/image";
 import gsap from "gsap";
@@ -45,6 +45,7 @@ const faqList = [
 
 export default function Faq() {
     const [openIndices, setOpenIndices] = useState<number[]>([]);
+    const containerRef = useRef<HTMLElement>(null);
 
     const toggleFaq = (index: number) => {
         setOpenIndices((prev) =>
@@ -55,6 +56,53 @@ export default function Faq() {
     };
 
     useEffect(() => {
+        const ctx = gsap.context(() => {
+            const headerTl = gsap.timeline({
+                scrollTrigger: {
+                    trigger: ".faq-header",
+                    start: "top 85%",
+                    toggleActions: "play reverse play reverse",
+                },
+            });
+
+            headerTl
+                .from(".faq-badge", {
+                    y: 30,
+                    opacity: 0,
+                    duration: 0.5,
+                    ease: "power3.out",
+                })
+                .from(
+                    ".faq-header h2 .word",
+                    {
+                        y: 35,
+                        opacity: 0,
+                        duration: 0.45,
+                        stagger: 0.07,
+                        ease: "power3.out",
+                    },
+                    "-=0.3"
+                );
+
+            gsap.from(".faq-item", {
+                y: 45,
+                opacity: 0,
+                duration: 0.6,
+                stagger: 0.2,
+                ease: "power3.out",
+                clearProps: "transform",
+                scrollTrigger: {
+                    trigger: ".faq-dropdown",
+                    start: "top 85%",
+                    toggleActions: "play none none none",
+                },
+            });
+        }, containerRef);
+
+        return () => ctx.revert();
+    }, []);
+
+    useEffect(() => {
         const timer = setTimeout(() => {
             ScrollTrigger.refresh();
         }, 360);
@@ -63,7 +111,7 @@ export default function Faq() {
     }, [openIndices]);
 
     return (
-        <section id="faq" className="faq-section">
+        <section id="faq" ref={containerRef} className="faq-section">
             <div className="faq-header">
                 <div className="faq-badge">
                     <Image

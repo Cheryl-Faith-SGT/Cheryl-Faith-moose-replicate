@@ -1,4 +1,4 @@
-import Nav from "./components/nav"
+import Nav from "./components/Nav"
 import Landing from "./components/Landing"
 import Loading from "./components/Loading"
 import About from "./components/about"
@@ -7,21 +7,23 @@ import Features from "./components/Features"
 import Benefits from "./components/Benefits"
 import Faq from "./components/Faq"
 import Cta from "./components/Cta"
+import Footer from "./components/Footer"
 import "./globals.css";
 import Lenis from 'lenis';
 
 export default function App() {
-
     return (
-        <div className="bg-white">
-            <Nav />
-            <Landing />
-            <About />
-            <Key />
-            <Features />
-            <Benefits />
-            <Faq />
-            <Cta />
-        </div>
+            <div className="bg-white">
+                <Loading />
+                <Nav />
+                <Landing />
+                <About />
+                <Key />
+                <Features />
+                <Benefits />
+                <Faq />
+                <Cta />
+                <Footer />
+            </div>
     );
 }

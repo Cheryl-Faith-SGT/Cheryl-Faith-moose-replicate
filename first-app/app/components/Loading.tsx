@@ -1,8 +1,8 @@
 "use client";
 
 import React, { useEffect, useRef, useState } from "react";
-import Image from "next/image";
 import gsap from "gsap";
+import "./loading.css";
 
 const letters = [
     { src: "/M-let.png", alt: "M" },
@@ -18,9 +18,13 @@ export default function Loading() {
     const logoRef = useRef<HTMLDivElement>(null);
 
     useEffect(() => {
+        if (!overlayRef.current || !logoRef.current) return;
+
         const ctx = gsap.context(() => {
             const tl = gsap.timeline({
-                onComplete: () => setIsRemoved(true),
+                onComplete: () => {
+                    setIsRemoved(true);
+                },
             });
 
             tl.fromTo(
@@ -38,7 +42,7 @@ export default function Loading() {
                         stagger: 0.08,
                         ease: "power3.out",
                     },
-                    "+=0.6"
+                    "+=0.4"
                 )
                 .to(
                     overlayRef.current,
@@ -57,69 +61,23 @@ export default function Loading() {
     if (isRemoved) return null;
 
     return (
-        <div
-            ref={overlayRef}
-            style={{
-                position: "fixed",
-                inset: 0,
-                width: "100vw",
-                height: "100vh",
-                backgroundColor: "#00d776",
-                display: "flex",
-                alignItems: "center",
-                justifyContent: "center",
-                zIndex: 9999,
-                padding: "0 1.5rem",
-            }}
-        >
-            <div
-                style={{
-                    display: "flex",
-                    alignItems: "center",
-                    justifyContent: "center",
-                    gap: "1rem",
-                    maxWidth: "92vw",
-                }}
-            >
-                <div ref={logoRef} style={{ opacity: 0, display: "flex", alignItems: "center" }}>
-                    <Image
+        <div ref={overlayRef} className="loading-overlay">
+            <div className="loading-content">
+                <div ref={logoRef} className="loading-logo-wrapper">
+                    <img
                         src="/moose-logo.png"
                         alt="Moose Logo"
-                        width={195}
-                        height={195}
-                        style={{
-                            height: "clamp(144px, 7.5vw, 85px)",
-                            width: "auto",
-                            objectFit: "contain",
-                        }}
-                        priority
+                        className="loading-logo-img"
                     />
                 </div>
 
-                <div
-                    style={{
-                        display: "flex",
-                        alignItems: "center",
-                        gap: "0.45rem",
-                    }}
-                >
+                <div className="loading-letters">
                     {letters.map((item, index) => (
-                        <div
-                            key={index}
-                            className="loading-letter"
-                            style={{ opacity: 0, display: "flex", alignItems: "center" }}
-                        >
-                            <Image
+                        <div key={index} className="loading-letter">
+                            <img
                                 src={item.src}
                                 alt={item.alt}
-                                width={64}
-                                height={64}
-                                style={{
-                                    height: "clamp(38px, 5.5vw, 62px)",
-                                    width: "auto",
-                                    objectFit: "contain",
-                                }}
-                                priority
+                                className="loading-letter-img"
                             />
                         </div>
                     ))}

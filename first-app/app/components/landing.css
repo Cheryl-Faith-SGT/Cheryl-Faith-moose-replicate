@@ -78,6 +78,71 @@
     transform: scale(1.27);
 }
 
+.landing-cta {
+    display: inline-flex;
+    align-items: center;
+    gap: 1.25rem;
+    background-color: var(--color-bg-light);
+    padding: 0 0 0 1.75rem;
+    border-radius: var(--radius-pill);
+    text-decoration: none;
+    margin-left: 10.75rem;
+    margin-top: 4.25rem;
+    transform: scale(1.35);
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.landing-cta:hover {
+    transform: scale(1.27);
+}
+
+/* Wavy Ani */
+.landing-wave-box {
+    position: relative;
+    display: inline-flex;
+    align-items: center;
+    overflow: hidden;
+    line-height: 1.25;
+}
+
+.landing-wave-layer {
+    display: inline-flex;
+    align-items: center;
+    font-size: 1rem;
+    font-weight: 700;
+    color: var(--color-dark);
+}
+
+.landing-wave-bottom {
+    position: absolute;
+    left: 0;
+    top: 0;
+    color: var(--color-black);
+}
+
+.landing-wave-char {
+    display: inline-block;
+    transition: transform 0.45s cubic-bezier(0.22, 1, 0.36, 1);
+    transition-delay: calc(var(--char-index) * 22ms);
+}
+
+.landing-wave-top .landing-wave-char {
+    transform: translateY(0%);
+}
+
+.landing-wave-bottom .landing-wave-char {
+    transform: translateY(130%);
+}
+
+.landing-cta:hover .landing-wave-top .landing-wave-char {
+    transform: translateY(-130%);
+}
+
+.landing-cta:hover .landing-wave-bottom .landing-wave-char {
+    transform: translateY(0%);
+}
+
+
 .landing-cta > span:first-child {
     font-size: 1rem;
     font-weight: 700;
@@ -127,7 +192,7 @@
 }
 
 .landing-phone img {
-    width: 340px;
+    width: 440px;
     height: auto;
     object-fit: contain;
     margin-top: 4rem;
@@ -141,9 +206,13 @@
     z-index: 15;
     width: 75%;
     min-height: 320px;
-    margin-top: 6rem !important;
+    margin-top: 6rem;
     padding: 3rem 0;
-    background: linear-gradient(180deg, #000802 80%, #004511);
+    background-color: #000802;
+    background-image: url("/bg-gradient.png");
+    background-position: center center;
+    background-size: cover;
+    background-repeat: no-repeat;
     border-radius: 2.5rem;
     display: flex;
     flex-direction: column;

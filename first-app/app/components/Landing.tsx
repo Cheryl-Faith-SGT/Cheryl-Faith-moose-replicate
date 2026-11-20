@@ -79,6 +79,17 @@ export default function Landing() {
         return () => mm.revert();
     }, []);
 
+    const renderWaveChars = (text: string) =>
+        text.split("").map((char, index) => (
+            <span
+                key={index}
+                className="landing-wave-char"
+                style={{ "--char-index": index } as React.CSSProperties}
+            >
+                {char === " " ? "\u00A0" : char}
+            </span>
+        ));
+
     return (
         <section id="home" ref={sectionRef} className="landing">
             <div className="landing-content">
@@ -96,7 +107,17 @@ export default function Landing() {
                         href="https://play.google.com/store/apps/details?id=com.moose_social&hl=id"
                         className="landing-cta"
                     >
-                        <span>Download Now</span>
+                        <span className="landing-wave-box">
+                            <span className="landing-wave-layer landing-wave-top">
+                                {renderWaveChars("Download Now")}
+                            </span>
+                            <span
+                                className="landing-wave-layer landing-wave-bottom"
+                                aria-hidden="true"
+                            >
+                                {renderWaveChars("Download Now")}
+                            </span>
+                        </span>
 
                         <span className="cta-icon">
                             <Image
@@ -138,8 +159,8 @@ export default function Landing() {
                         ref={phoneImgRef}
                         src="/moose-phone.png"
                         alt="Moose Phone App"
-                        width={600}
-                        height={600}
+                        width={800}
+                        height={800}
                         priority
                     />
                 </div>

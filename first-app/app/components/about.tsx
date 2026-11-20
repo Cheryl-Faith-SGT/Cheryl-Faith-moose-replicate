@@ -29,25 +29,32 @@ export default function About() {
                 duration: 0.55,
                 stagger: 0.08,
                 ease: "back.out(1.7)",
-            })
-
-                .from(
-                    ".about-anim-text",
-                    {
-                        y: 40,
-                        opacity: 0,
-                        duration: 0.55,
-                        stagger: 0.1,
-                        ease: "power2.out",
-                    },
-                    "-=0.35"
-                );
+            }).from(
+                ".about-anim-text",
+                {
+                    y: 40,
+                    opacity: 0,
+                    duration: 0.55,
+                    stagger: 0.1,
+                    ease: "power2.out",
+                },
+                "-=0.35"
+            );
         }, sectionRef);
 
         return () => ctx.revert();
     }, []);
 
-
+    const renderWaveChars = (text: string) =>
+        text.split("").map((char, index) => (
+            <span
+                key={index}
+                className="about-wave-char"
+                style={{ "--char-index": index } as React.CSSProperties}
+            >
+                {char === " " ? "\u00A0" : char}
+            </span>
+        ));
 
     return (
         <section id="about" ref={sectionRef} className="about-section">
@@ -105,7 +112,17 @@ export default function About() {
                         href="https://play.google.com/store/apps/details?id=com.moose_social&hl=id"
                         className="about-cta"
                     >
-                        <span>Download Now</span>
+                        <span className="about-wave-box">
+                            <span className="about-wave-layer about-wave-top">
+                                {renderWaveChars("Download Now")}
+                            </span>
+                            <span
+                                className="about-wave-layer about-wave-bottom"
+                                aria-hidden="true"
+                            >
+                                {renderWaveChars("Download Now")}
+                            </span>
+                        </span>
 
                         <span className="cta-icon">
                             <Image

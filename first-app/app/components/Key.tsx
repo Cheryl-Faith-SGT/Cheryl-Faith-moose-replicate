@@ -129,6 +129,17 @@ export default function Key() {
         return () => ctx.revert();
     }, []);
 
+    const renderWaveChars = (text: string) =>
+        text.split("").map((char, index) => (
+            <span
+                key={index}
+                className="key-wave-char"
+                style={{ "--char-index": index } as React.CSSProperties}
+            >
+                {char === " " ? "\u00A0" : char}
+            </span>
+        ));
+
     return (
         <section id="key" ref={sectionRef} className="key-section">
             <div className="key-header">
@@ -330,7 +341,17 @@ export default function Key() {
                             href="https://play.google.com/store/apps/details?id=com.moose_social&hl=id"
                             className="card-4-botton"
                         >
-                            Download Now
+                            <span className="key-wave-box">
+                                <span className="key-wave-layer key-wave-top">
+                                    {renderWaveChars("Download Now")}
+                                </span>
+                                <span
+                                    className="key-wave-layer key-wave-bottom"
+                                    aria-hidden="true"
+                                >
+                                    {renderWaveChars("Download Now")}
+                                </span>
+                            </span>
                         </Link>
                     </div>
                 </div>

@@ -79,7 +79,7 @@
     text-align: left;
     font-family: inherit;
     font-size: 1.6rem;
-    font-weight: 600;
+    font-weight: 500;
     color: #06140c;
     cursor: pointer;
     display: flex;
@@ -130,7 +130,8 @@
     margin: 0;
     font-size: 1.35rem;
     line-height: 1.55;
-    font-weight: 100;
+    font-weight: 400;
+    color: #06140c;
 }
 
 @media (max-width: 768px) {

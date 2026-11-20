@@ -12,7 +12,7 @@ const featuresList = [
     {
         icon: "/add-icon-1.png",
         title: "Real Conversations",
-        desc: "Chat instantly with real people — no bots, \nno fake accounts.",
+        desc: "Chat instantly with real \npeople — no bots, \nno fake accounts.",
     },
     {
         icon: "/add-icon-2.png",

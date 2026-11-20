@@ -50,6 +50,7 @@ export default function Nav() {
             e.preventDefault();
             window.scrollTo({ top: 0, behavior: "smooth" });
             window.history.pushState(null, "", "#home");
+            return;
         }
 
         if (href.startsWith("#")) {
@@ -61,6 +62,21 @@ export default function Nav() {
             }
         }
     };
+
+    const renderWaveChars = (text: string, startIndex = 0) =>
+        text.split("").map((char, index) => (
+            <span
+                key={index}
+                className="wave-char"
+                style={
+                    {
+                        "--char-index": index + startIndex,
+                    } as React.CSSProperties
+                }
+            >
+                {char === " " ? "\u00A0" : char}
+            </span>
+        ));
 
     return (
         <nav className={`navbar ${isVisible ? "nav-visible" : "nav-hidden"}`}>
@@ -96,27 +112,49 @@ export default function Nav() {
                     <div className="nav-menu">
                         {menuItems.map((item) => {
                             const isActive = activeLink === item.href;
-
                             return (
-                                <Link
+                                <a
                                     key={item.href}
                                     href={item.href}
                                     onClick={(e) => handleNavClick(e, item.href)}
                                     className={`nav-link ${isActive ? "active" : ""}`}
                                 >
-                                    <span className="nav-dot" />
-                                    <span className="nav-text-link">{item.name}</span>
-                                </Link>
+                                    <span className="wave-box">
+                                        <span className="wave-layer wave-layer-top">
+                                            {renderWaveChars(item.name, 0)}
+                                        </span>
+
+                                        <span
+                                            className="wave-layer wave-layer-bottom"
+                                            aria-hidden="true"
+                                        >
+                                            <span className="nav-dot-hover" />
+                                            {renderWaveChars(item.name, 0)}
+                                        </span>
+                                    </span>
+                                </a>
                             );
                         })}
                     </div>
 
                     <Link
                         href="https://play.google.com/store/apps/details?id=com.moose_social&hl=id"
+                        target="_blank"
+                        rel="noopener noreferrer"
                         className="nav-cta"
                         onClick={() => setIsMobileOpen(false)}
                     >
-                        Download Now
+                        <span className="wave-box">
+                            <span className="wave-layer wave-layer-top">
+                                {renderWaveChars("Download Now", 0)}
+                            </span>
+                            <span
+                                className="wave-layer wave-layer-bottom"
+                                aria-hidden="true"
+                            >
+                                {renderWaveChars("Download Now", 0)}
+                            </span>
+                        </span>
                     </Link>
                 </div>
             </div>

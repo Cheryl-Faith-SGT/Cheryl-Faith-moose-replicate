@@ -79,10 +79,50 @@
     transform: scale(1.14);
 }
 
-.about-cta > span:first-child {
+/* Wavy Ani */
+.about-wave-box {
+    position: relative;
+    display: inline-flex;
+    align-items: center;
+    overflow: hidden;
+    line-height: 1.25;
+}
+
+.about-wave-layer {
+    display: inline-flex;
+    align-items: center;
     font-size: 1rem;
     font-weight: 700;
     color: var(--color-dark);
+}
+
+.about-wave-bottom {
+    position: absolute;
+    left: 0;
+    top: 0;
+    color: var(--color-dark);
+}
+
+.about-wave-char {
+    display: inline-block;
+    transition: transform 0.45s cubic-bezier(0.22, 1, 0.36, 1);
+    transition-delay: calc(var(--char-index) * 22ms);
+}
+
+.about-wave-top .about-wave-char {
+    transform: translateY(0%);
+}
+
+.about-wave-bottom .about-wave-char {
+    transform: translateY(130%);
+}
+
+.about-cta:hover .about-wave-top .about-wave-char {
+    transform: translateY(-130%);
+}
+
+.about-cta:hover .about-wave-bottom .about-wave-char {
+    transform: translateY(0%);
 }
 
 .cta-icon {
@@ -113,7 +153,6 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.05);
 }
 
 .bubble img {
@@ -170,11 +209,11 @@
         max-width: 250px;
     }
 
-    .about-title br{
+    .about-title br {
         display: none;
     }
 
-    .about-title{
+    .about-title {
         font-size: 2rem;
     }
 

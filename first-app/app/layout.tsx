@@ -24,7 +24,46 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
       lang="en"
       className={`${geistSans.variable} ${geistMono.variable} h-full antialiased`}
     >
-      <body className="min-h-full flex flex-col"><SmoothScroll>{children}</SmoothScroll></body>
+      <body className="min-h-full flex flex-col">
+      <div
+          className="top-blur"
+          aria-hidden="true"
+          style={{
+            position: "fixed",
+            top: 0,
+            left: 0,
+            width: "100%",
+            height: "44px",
+            zIndex: 999,
+            pointerEvents: "none",
+            background: "rgba(255, 255, 255, 0.02)",
+            backdropFilter: "blur(8px)",
+            WebkitBackdropFilter: "blur(8px)",
+            maskImage: "linear-gradient(to bottom, black 20%, transparent 100%)",
+            WebkitMaskImage: "linear-gradient(to bottom, black 20%, transparent 100%)",
+          }}
+      />
+      <SmoothScroll>{children}</SmoothScroll>
+      <div
+          className="bottom-blur"
+          aria-hidden="true"
+          style={{
+            position: "fixed",
+            bottom: 0,
+            left: 0,
+            width: "100%",
+            height: "44px",
+            zIndex: 999,
+            pointerEvents: "none",
+            background: "rgba(255, 255, 255, 0.02)",
+            backdropFilter: "blur(8px)",
+            WebkitBackdropFilter: "blur(8px)",
+            maskImage: "linear-gradient(to top, black 20%, transparent 100%)",
+            WebkitMaskImage: "linear-gradient(to top, black 20%, transparent 100%)",
+          }}
+      />
+
+      </body>
     </html>
   );
 }
