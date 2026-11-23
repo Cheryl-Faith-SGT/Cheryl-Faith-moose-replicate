@@ -2,9 +2,39 @@
 
 :root {
   --background: #ffffff;
+  --color-primary: #00d776;
+  --color-primary-hover: #00b362;
+  --color-dark: #06140c;
+  --color-black: #000000;
+  --color-white: #ffffff;
+  --color-gray-text: #7a7a7a;
+  --color-bg-light: #f5f5f5;
+  --radius-pill: min(50vh, 50vw);
+
+  --container-max-width: min(145vh, 145vw);
+  --container-padding-x: min(4vh, 4vw);
 }
 
-html, body {
+@media (max-width: 1023px) {
+  :root {
+    --container-max-width: 100%;
+    --container-padding-x: min(4.3vh, 4.3vw);
+  }
+}
+
+@media (max-width: 767px) {
+  :root {
+    --container-max-width: 100%;
+    --container-padding-x: min(9.5vh, 9.5vw);
+  }
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html,
+body {
   font-family: "Plus Jakarta Sans", sans-serif;
   scroll-behavior: auto !important;
 }
@@ -22,31 +52,10 @@ html.lenis body {
   overflow: hidden;
 }
 
-:root {
-  --color-primary: #00d776;
-  --color-primary-hover: #00b362;
-  --color-dark: #06140c;
-  --color-black: #000000;
-  --color-white: #ffffff;
-  --color-gray-text: #7a7a7a;
-  --color-bg-light: #f5f5f5;
-  --radius-pill: 9999px;
-}
-
-* {
-  box-sizing: border-box;
-}
-
-html {
-  scroll-behavior: smooth;
-}
-
 body {
   margin: 0;
   padding: 0;
   background-color: var(--color-white);
   color: var(--color-dark);
-  font-family: "Plus Jakarta Sans", sans-serif;
   overflow-x: clip;
 }
-

@@ -7,8 +7,8 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    z-index: 9999;
-    padding: 0 1.5rem;
+    z-index: 99999;
+    padding: 0 var(--container-padding-x);
     overflow: hidden;
 }
 
@@ -16,8 +16,7 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    gap: clamp(0.65rem, 2vw, 1.25rem);
-    max-width: 92vw;
+    gap: min(1.85vh, 1.85vw);
 }
 
 .loading-logo-wrapper {
@@ -28,16 +27,16 @@
 }
 
 .loading-logo-img {
-    height: clamp(80px, 11vw, 160px);
+    height: min(14.8vh, 14.8vw);
     width: auto;
     object-fit: contain;
-    margin-right: clamp(0.35rem, 1.5vw, 1rem);
+    margin-right: min(1.5vh, 1.5vw);
 }
 
 .loading-letters {
     display: flex;
     align-items: center;
-    gap: clamp(0.25rem, 1vw, 0.5rem);
+    gap: min(0.75vh, 0.75vw);
 }
 
 .loading-letter {
@@ -47,57 +46,54 @@
 }
 
 .loading-letter-img {
-    height: clamp(32px, 5.5vw, 62px);
+    height: min(5.7vh, 5.7vw);
     width: auto;
     object-fit: contain;
 }
 
-/* Tablet (<= 1024px) */
+/* Tablet */
 @media (max-width: 1024px) {
     .loading-logo-img {
-        height: 115px;
+        height: min(15vh, 15vw);
     }
 
     .loading-letter-img {
-        height: 46px;
+        height: min(6vh, 6vw);
     }
 }
 
-/* Mobile (<= 640px) */
+/* Mobile */
 @media (max-width: 640px) {
-    .loading-overlay {
-        padding: 0 1rem;
-    }
-
     .loading-content {
-        gap: 0.5rem;
+        gap: min(2.05vh, 2.05vw);
     }
 
     .loading-logo-img {
-        height: 75px;
-        margin-right: 0.35rem;
+        height: min(19.2vh, 19.2vw);
+        margin-right: min(1.4vh, 1.4vw);
     }
 
     .loading-letters {
-        gap: 0.25rem;
+        gap: min(1.02vh, 1.02vw);
     }
 
     .loading-letter-img {
-        height: 30px;
+        height: min(7.7vh, 7.7vw);
     }
 }
 
+/* Small */
 @media (max-width: 380px) {
     .loading-logo-img {
-        height: 60px;
-        margin-right: 0.25rem;
+        height: min(16.5vh, 16.5vw);
+        margin-right: min(1vh, 1vw);
     }
 
     .loading-letters {
-        gap: 0.2rem;
+        gap: min(0.8vh, 0.8vw);
     }
 
     .loading-letter-img {
-        height: 24px;
+        height: min(6.6vh, 6.6vw);
     }
 }

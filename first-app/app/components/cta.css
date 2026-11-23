@@ -1,21 +1,31 @@
 .cta-section {
+    position: relative;
+    width: 100vw;
+    display: flex;
+    justify-content: center;
+    margin: min(3.2vh, 3.2vw) 0 min(4.4vh, 4.4vw) 0;
+    font-family: "Plus Jakarta Sans", sans-serif;
+}
+
+.cta-inner {
     width: 100%;
-    padding: 0 1.5rem;
-    margin: 2.2rem 0 3rem 0;
+    max-width: min(131.5vh, 131.5vw);
+    margin: 0 auto;
+    padding: 0 var(--container-padding-x);
 }
 
 .cta-box {
     position: relative;
     z-index: 15;
-    max-width: 1190px;
-    min-height: 320px;
-    margin: -0.6rem auto 0;
-    padding: 5rem 2rem 8.5rem 2rem;
+    width: 100%;
+    min-height: min(30vh, 30vw);
+    margin: calc(min(0.85vh, 0.85vw) * -1) auto 0;
+    padding: min(7.4vh, 7.4vw) min(3vh, 3vw) min(12.5vh, 12.5vw) min(3vh, 3vw);
     background-image: url("/bg-gradient.png");
     background-position: center center;
     background-size: cover;
     background-repeat: no-repeat;
-    border-radius: 2.5rem;
+    border-radius: min(3.7vh, 3.7vw);
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -34,7 +44,7 @@
 }
 
 .cta-box h2 {
-    font-size: clamp(2rem, 3.8vw, 3.6rem);
+    font-size: min(5.8vh, 5.8vw);
     font-weight: 300;
     line-height: 1.15;
     letter-spacing: -0.025em;
@@ -52,7 +62,7 @@
 
 .cta-line {
     width: 100%;
-    margin: 3.6rem 0;
+    margin: min(5.3vh, 5.3vw) 0;
 }
 
 .cta-line-img {
@@ -62,11 +72,11 @@
 }
 
 .cta-desc {
-    font-size: clamp(1rem, 1vw, 1.25rem);
-    line-height: 1.2;
+    font-size: min(1.85vh, 1.85vw);
+    line-height: 1.3;
     color: var(--color-primary);
     opacity: 0.9;
-    margin: 0 0 2.5rem;
+    margin: 0 0 min(3.7vh, 3.7vw);
 }
 
 .cta-link {
@@ -76,7 +86,7 @@
 }
 
 .gplay-img {
-    width: 160px;
+    width: min(16vh, 16vw);
     height: auto;
     object-fit: contain;
 }
@@ -87,9 +97,9 @@
 
 .img-bg {
     position: absolute;
-    bottom: -3.4rem;
-    width: 350px;
-    height: 350px;
+    bottom: calc(min(5vh, 5vw) * -1);
+    width: min(32.5vh, 32.5vw);
+    height: min(32.5vh, 32.5vw);
     z-index: 1;
     pointer-events: none;
     -webkit-mask-image: linear-gradient(
@@ -105,11 +115,11 @@
 }
 
 .img-bg-left {
-    left: 1rem;
+    left: min(1.5vh, 1.5vw);
 }
 
 .img-bg-right {
-    right: 1rem;
+    right: min(1.5vh, 1.5vw);
 }
 
 .cta-decor-img {
@@ -117,27 +127,39 @@
     object-position: bottom;
 }
 
-/* Mobile */
+/* TABLET - MOBILE */
 @media (max-width: 768px) {
     .cta-section {
-        padding: 0 1rem;
+        margin: min(6vh, 6vw) 0 min(8vh, 8vw) 0;
+    }
+
+    .cta-inner {
+        max-width: 100%;
+        padding: 0 var(--container-padding-x);
     }
 
     .cta-box {
-        padding: 4.5rem 1.25rem 9.5rem;
-        border-radius: 2rem;
+        padding: min(11.5vh, 11.5vw) min(4.5vh, 4.5vw) min(46vh, 46vw);
+        border-radius: min(5.5vh, 5.5vw);
     }
 
-    .cta-box h2 br {
+    .cta-box h2 {
+        font-size: min(7.4vh, 7.4vw);
+    }
+
+    .cta-box h2 br,
+    .cta-desc br {
         display: none;
     }
 
     .cta-line {
-        margin: 2.5rem 0;
+        margin: min(6.5vh, 6.5vw) 0;
     }
 
-    .cta-desc br {
-        display: none;
+    .cta-desc {
+        font-size: min(3.8vh, 3.8vw);
+        line-height: 1.45;
+        margin-bottom: min(6.5vh, 6.5vw);
     }
 
     .gplay-desktop {
@@ -148,9 +170,32 @@
         display: block;
     }
 
+    .gplay-img {
+        width: min(42vh, 42vw);
+    }
+
     .img-bg {
-        width: 160px;
-        height: 160px;
-        opacity: 0.7;
+        width: min(66vh, 66vw);
+        height: min(66vh, 66vw);
+        opacity: 1;
+        -webkit-mask-image: linear-gradient(
+                to bottom,
+                rgba(0, 0, 0, 1) 7%,
+                rgba(0, 0, 0, 0.3) 100%
+        );
+        mask-image: linear-gradient(
+                to bottom,
+                rgba(0, 0, 0, 1) 7%,
+                rgba(0, 0, 0, 0.3) 100%
+        );
+        bottom: calc(min(4.6vh, 4.6vw) * -1);
+    }
+
+    .img-bg-left {
+        left: calc(min(11.5vh, 11.5vw) * -1);
+    }
+
+    .img-bg-right {
+        right: calc(min(11.5vh, 11.5vw) * -1);
     }
 }

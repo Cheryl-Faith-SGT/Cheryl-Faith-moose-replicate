@@ -29,12 +29,18 @@ export default function Loading() {
 
             tl.fromTo(
                 logoRef.current,
-                { opacity: 0, x: -30 },
+                {
+                    opacity: 0,
+                    x: () => -Math.min(window.innerHeight, window.innerWidth) * 0.028,
+                },
                 { opacity: 1, x: 0, duration: 0.5, ease: "power3.out" }
             )
                 .fromTo(
                     ".loading-letter",
-                    { opacity: 0, x: -22 },
+                    {
+                        opacity: 0,
+                        x: () => -Math.min(window.innerHeight, window.innerWidth) * 0.02,
+                    },
                     {
                         opacity: 1,
                         x: 0,

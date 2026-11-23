@@ -42,7 +42,7 @@ export default function Features() {
     useEffect(() => {
         const ctx = gsap.context(() => {
             gsap.from(".features-title .word", {
-                y: 35,
+                y: () => Math.min(window.innerHeight, window.innerWidth) * 0.032,
                 opacity: 0,
                 duration: 0.45,
                 stagger: 0.07,
@@ -55,7 +55,7 @@ export default function Features() {
             });
 
             gsap.from(".feature-card", {
-                y: 35,
+                y: () => Math.min(window.innerHeight, window.innerWidth) * 0.032,
                 opacity: 0,
                 duration: 0.5,
                 stagger: 0.08,
@@ -80,7 +80,7 @@ export default function Features() {
                 .from(
                     ".back-text-left",
                     {
-                        x: 95,
+                        x: () => Math.min(window.innerHeight, window.innerWidth) * 0.088,
                         ease: "none",
                     },
                     0
@@ -88,7 +88,7 @@ export default function Features() {
                 .from(
                     ".back-text-right",
                     {
-                        x: -95,
+                        x: () => -Math.min(window.innerHeight, window.innerWidth) * 0.088,
                         ease: "none",
                     },
                     0
@@ -100,45 +100,47 @@ export default function Features() {
 
     return (
         <section id="features" ref={sectionRef} className="features-section">
-            <h1 className="features-title">
-                <span className="word">...and</span>{" "}
-                <span className="word">more</span>{" "}
-                <span className="word">additional</span>{" "}
-                <span className="word">features</span>
-            </h1>
+            <div className="features-inner">
+                <h1 className="features-title">
+                    <span className="word">...and</span>{" "}
+                    <span className="word">more</span>{" "}
+                    <span className="word">additional</span>{" "}
+                    <span className="word">features</span>
+                </h1>
 
-            <div className="features-grid">
-                {featuresList.map((item, index) => (
-                    <div key={index} className="feature-card">
-                        <div className="feature-icon">
-                            <Image
-                                src={item.icon}
-                                alt={item.title}
-                                fill
-                                unoptimized
-                            />
+                <div className="features-grid">
+                    {featuresList.map((item, index) => (
+                        <div key={index} className="feature-card">
+                            <div className="feature-icon">
+                                <Image
+                                    src={item.icon}
+                                    alt={item.title}
+                                    fill
+                                    unoptimized
+                                />
+                            </div>
+
+                            <div className="feature-text">
+                                <h3>{item.title}</h3>
+                                <p>{item.desc}</p>
+                            </div>
                         </div>
+                    ))}
+                </div>
 
-                        <div className="feature-text">
-                            <h3>{item.title}</h3>
-                            <p>{item.desc}</p>
-                        </div>
-                    </div>
-                ))}
-            </div>
+                <div className="back-text">
+                    <h1 className="back-text-left">VARIETY</h1>
+                    <h1 className="back-text-right">FEATURES</h1>
+                </div>
 
-            <div className="back-text">
-                <h1 className="back-text-left">VARIETY</h1>
-                <h1 className="back-text-right">FEATURES</h1>
-            </div>
-
-            <div className="features-phone">
-                <Image
-                    src="/add-phone.png"
-                    alt="MOOSE Phone"
-                    fill
-                    unoptimized
-                />
+                <div className="features-phone">
+                    <Image
+                        src="/add-phone.png"
+                        alt="MOOSE Phone"
+                        fill
+                        unoptimized
+                    />
+                </div>
             </div>
         </section>
     );

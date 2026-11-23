@@ -39,10 +39,10 @@ const benefitsList = [
     },
 ];
 
-export default function Key() {
-    const containerRef = useRef(null);
-    const headerRef = useRef(null);
-    const cardsWrapperRef = useRef(null);
+export default function Benefits() {
+    const containerRef = useRef<HTMLElement>(null);
+    const headerRef = useRef<HTMLDivElement>(null);
+    const cardsWrapperRef = useRef<HTMLDivElement>(null);
 
     useEffect(() => {
         const ctx = gsap.context(() => {
@@ -56,7 +56,7 @@ export default function Key() {
 
             headerTl
                 .from(".benefits-badge", {
-                    y: 30,
+                    y: () => Math.min(window.innerHeight, window.innerWidth) * 0.028,
                     opacity: 0,
                     duration: 0.5,
                     ease: "power3.out",
@@ -64,7 +64,7 @@ export default function Key() {
                 .from(
                     ".benefits-header h2 .word",
                     {
-                        y: 35,
+                        y: () => Math.min(window.innerHeight, window.innerWidth) * 0.032,
                         opacity: 0,
                         duration: 0.45,
                         stagger: 0.07,
@@ -87,13 +87,13 @@ export default function Key() {
                 start: "top 15%",
                 onEnter: () => {
                     gsap.to(headerRef.current, {
-                        y: -250,
+                        y: () => -Math.min(window.innerHeight, window.innerWidth) * 0.23,
                         opacity: 0,
                         duration: 0.6,
                         ease: "power2.out",
                     });
                     gsap.to(cardsWrapperRef.current, {
-                        y: -60,
+                        y: () => -Math.min(window.innerHeight, window.innerWidth) * 0.055,
                         duration: 0.6,
                         ease: "power2.out",
                     });
@@ -130,17 +130,24 @@ export default function Key() {
                     scale: 0.5,
                     yPercent: -20,
                     ease: "none",
-                })
-                    .to(card, {
+                }).to(
+                    card,
+                    {
                         yPercent: 0,
                         ease: "none",
-                    }, "<");
+                    },
+                    "<"
+                );
 
                 if (cards[i + 2]) {
-                    tl.to(cards[i + 2], {
-                        yPercent: 106,
-                        ease: "none",
-                    }, "<");
+                    tl.to(
+                        cards[i + 2],
+                        {
+                            yPercent: 106,
+                            ease: "none",
+                        },
+                        "<"
+                    );
                 }
             });
         }, containerRef);
@@ -148,63 +155,75 @@ export default function Key() {
         return () => ctx.revert();
     }, []);
 
-
     return (
         <section ref={containerRef} className="benefits-section">
-            <div ref={headerRef} className="benefits-header">
-                <div className="benefits-badge">
-                    <Image
-                        src="/star-icon.png"
-                        alt="Icon"
-                        width={28}
-                        height={28}
-                    />
-                    <span>Benefits</span>
+            <div className="benefits-inner">
+                <div ref={headerRef} className="benefits-header">
+                    <div className="benefits-badge">
+                        <Image
+                            src="/star-icon.png"
+                            alt="Icon"
+                            width={28}
+                            height={28}
+                        />
+                        <span>Benefits</span>
+                    </div>
+
+                    <h2>
+                        <span className="word">Experience</span>
+                        <br />
+                        <span className="green-line">
+                            <span className="word">Future</span>{" "}
+                            <span className="word">of</span>{" "}
+                            <span className="word">Social</span>{" "}
+                            <span className="word">Media</span>
+                        </span>
+                    </h2>
                 </div>
 
-                <h2>
-                    <span className="word">Experience</span><br />
-                    <span className="green-line">
-                        <span className="word">Future</span>{" "}
-                        <span className="word">of</span>{" "}
-                        <span className="word">Social</span>{" "}
-                        <span className="word">Media</span>
-                    </span>
-                </h2>
-            </div>
+                <div ref={cardsWrapperRef} className="benefits-cards">
+                    {benefitsList.map((item, index) => (
+                        <div key={index} className="benefits-card">
+                            <div className="benefits-img">
+                                <Image
+                                    src={item.img}
+                                    alt={item.title}
+                                    fill
+                                    unoptimized
+                                />
+                            </div>
 
-            <div ref={cardsWrapperRef} className="benefits-cards">
-                {benefitsList.map((item, index) => (
-                    <div key={index} className="benefits-card">
-                        <div className="benefits-img">
-                            <Image
-                                src={item.img}
-                                alt={item.title}
-                                fill
-                                unoptimized
-                            />
+                            <div className="benefits-text">
+                                <h3>{item.title}</h3>
+                                <p>{item.desc}</p>
+                                <ul>
+                                    <li>
+                                        <span className="point-icon">
+                                            <Image
+                                                src="/blk-arrow-icon.png"
+                                                alt="icon"
+                                                width={16}
+                                                height={16}
+                                            />
+                                        </span>
+                                        <span>{item.point1}</span>
+                                    </li>
+                                    <li>
+                                        <span className="point-icon">
+                                            <Image
+                                                src="/blk-arrow-icon.png"
+                                                alt="icon"
+                                                width={16}
+                                                height={16}
+                                            />
+                                        </span>
+                                        <span>{item.point2}</span>
+                                    </li>
+                                </ul>
+                            </div>
                         </div>
-
-                        <div className="benefits-text">
-                            <h3>{item.title}</h3>
-                            <p>{item.desc}</p>
-                            <ul>
-                                <li>
-                                    <span className="point-icon">
-                                        <Image src="/blk-arrow-icon.png" alt="icon" width={16} height={16} />
-                                    </span>
-                                    <span>{item.point1}</span>
-                                </li>
-                                <li>
-                                    <span className="point-icon">
-                                        <Image src="/blk-arrow-icon.png" alt="icon" width={16} height={16} />
-                                    </span>
-                                    <span>{item.point2}</span>
-                                </li>
-                            </ul>
-                        </div>
-                    </div>
-                ))}
+                    ))}
+                </div>
             </div>
         </section>
     );

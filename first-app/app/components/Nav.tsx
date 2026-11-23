@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
 import Link from "next/link";
 import Image from "next/image";
 import "./nav.css";
@@ -8,8 +8,8 @@ import "./nav.css";
 export default function Nav() {
     const [activeLink, setActiveLink] = useState("#home");
     const [isVisible, setIsVisible] = useState(true);
-    const [lastScrollY, setLastScrollY] = useState(0);
     const [isMobileOpen, setIsMobileOpen] = useState(false);
+    const lastScrollYRef = useRef(0);
 
     const menuItems = [
         { name: "Home", href: "#home" },
@@ -23,21 +23,23 @@ export default function Nav() {
             if (isMobileOpen) return;
 
             const currentScrollY = window.scrollY;
+            const diff = currentScrollY - lastScrollYRef.current;
 
             if (currentScrollY <= 50) {
                 setIsVisible(true);
-            } else if (currentScrollY > lastScrollY) {
+                lastScrollYRef.current = currentScrollY;
+            } else if (diff > 10) {
                 setIsVisible(false);
-            } else if (currentScrollY < lastScrollY) {
+                lastScrollYRef.current = currentScrollY;
+            } else if (diff < -10) {
                 setIsVisible(true);
+                lastScrollYRef.current = currentScrollY;
             }
-
-            setLastScrollY(currentScrollY);
         };
 
         window.addEventListener("scroll", handleScroll, { passive: true });
         return () => window.removeEventListener("scroll", handleScroll);
-    }, [lastScrollY, isMobileOpen]);
+    }, [isMobileOpen]);
 
     const handleNavClick = (
         e: React.MouseEvent<HTMLAnchorElement>,
@@ -100,7 +102,7 @@ export default function Nav() {
                         type="button"
                         aria-label="Toggle Menu"
                         className={`hamburger-btn ${isMobileOpen ? "open" : ""}`}
-                        onClick={() => setIsMobileOpen(!isMobileOpen)}
+                        onClick={() => setIsMobileOpen((prev) => !prev)}
                     >
                         <span className="line line-1" />
                         <span className="line line-2" />

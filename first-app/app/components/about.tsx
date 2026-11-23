@@ -28,11 +28,11 @@ export default function About() {
                 opacity: 0,
                 duration: 0.55,
                 stagger: 0.08,
-                ease: "back.out(1.7)",
+                ease: "power3.out",
             }).from(
                 ".about-anim-text",
                 {
-                    y: 40,
+                    y: () => Math.min(window.innerHeight, window.innerWidth) * 0.037,
                     opacity: 0,
                     duration: 0.55,
                     stagger: 0.1,
@@ -58,81 +58,85 @@ export default function About() {
 
     return (
         <section id="about" ref={sectionRef} className="about-section">
-            <div className="bubble bubble-1">
-                <Image
-                    src="/ab1.png"
-                    alt="Icon 1"
-                    width={82}
-                    height={82}
-                />
-            </div>
-
-            <div className="bubble bubble-2">
-                <Image
-                    src="/ab2.png"
-                    alt="Icon 2"
-                    width={82}
-                    height={82}
-                />
-            </div>
-
-            <div className="bubble bubble-3">
-                <Image
-                    src="/ab3.png"
-                    alt="Icon 3"
-                    width={82}
-                    height={82}
-                />
-            </div>
-
-            <div className="bubble bubble-4">
-                <Image
-                    src="/ab4.png"
-                    alt="Icon 4"
-                    width={82}
-                    height={82}
-                />
-            </div>
-
-            <div className="about-center">
-                <h1 className="about-title about-anim-text">
-                    The all-in-one social <br />
-                    platform built on <br />
-                    authenticity.
-                </h1>
-
-                <div className="about-tagline about-anim-text">
-                    <div className="gl-1"></div>
-                    <p>Feel at ease with a social space you can trust.</p>
-                    <div className="gl-2"></div>
+            <div className="about-inner">
+                <div className="bubble bubble-1">
+                    <Image
+                        src="/ab1.png"
+                        alt="Icon 1"
+                        width={82}
+                        height={82}
+                    />
                 </div>
 
-                <div className="about-cta-wrapper about-anim-text">
-                    <Link
-                        href="https://play.google.com/store/apps/details?id=com.moose_social&hl=id"
-                        className="about-cta"
-                    >
-                        <span className="about-wave-box">
-                            <span className="about-wave-layer about-wave-top">
-                                {renderWaveChars("Download Now")}
-                            </span>
-                            <span
-                                className="about-wave-layer about-wave-bottom"
-                                aria-hidden="true"
-                            >
-                                {renderWaveChars("Download Now")}
-                            </span>
-                        </span>
+                <div className="bubble bubble-2">
+                    <Image
+                        src="/ab2.png"
+                        alt="Icon 2"
+                        width={82}
+                        height={82}
+                    />
+                </div>
 
-                        <span className="cta-icon">
-                            <Image
-                                src="/arrow-icon.png"
-                                alt="Download Arrow"
-                                width={18}
-                                height={18}
-                            />
-                        </span>
-                    </Link>
+                <div className="bubble bubble-3">
+                    <Image
+                        src="/ab3.png"
+                        alt="Icon 3"
+                        width={82}
+                        height={82}
+                    />
+                </div>
+
+                <div className="bubble bubble-4">
+                    <Image
+                        src="/ab4.png"
+                        alt="Icon 4"
+                        width={82}
+                        height={82}
+                    />
+                </div>
+
+                <div className="about-center">
+                    <h1 className="about-title about-anim-text">
+                        The all-in-one social <br />
+                        platform built on <br />
+                        authenticity.
+                    </h1>
+
+                    <div className="about-tagline about-anim-text">
+                        <div className="gl-1"></div>
+                        <p>Feel at ease with a social space you can trust.</p>
+                        <div className="gl-2"></div>
+                    </div>
+
+                    <div className="about-cta-wrapper about-anim-text">
+                        <Link
+                            href="https://play.google.com/store/apps/details?id=com.moose_social&hl=id"
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            className="about-cta"
+                        >
+                            <span className="about-wave-box">
+                                <span className="about-wave-layer about-wave-top">
+                                    {renderWaveChars("Download Now")}
+                                </span>
+                                <span
+                                    className="about-wave-layer about-wave-bottom"
+                                    aria-hidden="true"
+                                >
+                                    {renderWaveChars("Download Now")}
+                                </span>
+                            </span>
+
+                            <span className="about-cta-icon">
+                                <Image
+                                    src="/arrow-icon.png"
+                                    alt="Download Arrow"
+                                    width={18}
+                                    height={18}
+                                />
+                            </span>
+                        </Link>
+                    </div>
                 </div>
             </div>
         </section>

@@ -67,7 +67,7 @@ export default function Faq() {
 
             headerTl
                 .from(".faq-badge", {
-                    y: 30,
+                    y: () => Math.min(window.innerHeight, window.innerWidth) * 0.028,
                     opacity: 0,
                     duration: 0.5,
                     ease: "power3.out",
@@ -75,7 +75,7 @@ export default function Faq() {
                 .from(
                     ".faq-header h2 .word",
                     {
-                        y: 35,
+                        y: () => Math.min(window.innerHeight, window.innerWidth) * 0.032,
                         opacity: 0,
                         duration: 0.45,
                         stagger: 0.07,
@@ -85,7 +85,7 @@ export default function Faq() {
                 );
 
             gsap.from(".faq-item", {
-                y: 45,
+                y: () => Math.min(window.innerHeight, window.innerWidth) * 0.042,
                 opacity: 0,
                 duration: 0.6,
                 stagger: 0.2,
@@ -112,53 +112,55 @@ export default function Faq() {
 
     return (
         <section id="faq" ref={containerRef} className="faq-section">
-            <div className="faq-header">
-                <div className="faq-badge">
-                    <Image
-                        src="/tanya-icon.png"
-                        alt="Icon"
-                        width={28}
-                        height={28}
-                    />
-                    <span>FAQ</span>
+            <div className="faq-inner">
+                <div className="faq-header">
+                    <div className="faq-badge">
+                        <Image
+                            src="/tanya-icon.png"
+                            alt="Icon"
+                            width={28}
+                            height={28}
+                        />
+                        <span>FAQ</span>
+                    </div>
+
+                    <h2>
+                        <span className="word">Frequently</span>{" "}
+                        <span className="word">Asked</span>{" "}
+                        <span className="green-line">
+                            <span className="word">Questions</span>
+                        </span>
+                    </h2>
                 </div>
 
-                <h2>
-                    <span className="word">Frequently</span>{" "}
-                    <span className="word">Asked</span>{" "}
-                    <span className="green-line">
-                        <span className="word">Questions</span>
-                    </span>
-                </h2>
-            </div>
-
-            <div className="faq-dropdown">
-                {faqList.map((item, index) => {
-                    const isOpen = openIndices.includes(index);
-                    return (
-                        <div
-                            key={index}
-                            className={`faq-item ${isOpen ? "open" : ""}`}
-                        >
-                            <button
-                                type="button"
-                                className="faq-question"
-                                onClick={() => toggleFaq(index)}
-                                aria-expanded={isOpen}
+                <div className="faq-dropdown">
+                    {faqList.map((item, index) => {
+                        const isOpen = openIndices.includes(index);
+                        return (
+                            <div
+                                key={index}
+                                className={`faq-item ${isOpen ? "open" : ""}`}
                             >
-                                <span>{item.question}</span>
-                                <span className="faq-icon">く</span>
-                            </button>
+                                <button
+                                    type="button"
+                                    className="faq-question"
+                                    onClick={() => toggleFaq(index)}
+                                    aria-expanded={isOpen}
+                                >
+                                    <span>{item.question}</span>
+                                    <span className="faq-icon">く</span>
+                                </button>
 
-                            <div className="faq-answer-wrapper">
-                                <div className="faq-answer-inner">
-                                    <hr className="faq-divider" />
-                                    <p className="faq-answer">{item.answer}</p>
+                                <div className="faq-answer-wrapper">
+                                    <div className="faq-answer-inner">
+                                        <hr className="faq-divider" />
+                                        <p className="faq-answer">{item.answer}</p>
+                                    </div>
                                 </div>
                             </div>
-                        </div>
-                    );
-                })}
+                        );
+                    })}
+                </div>
             </div>
         </section>
     );

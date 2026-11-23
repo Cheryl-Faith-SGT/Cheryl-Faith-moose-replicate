@@ -1,9 +1,17 @@
 .faq-section {
-    width: 100%;
-    max-width: 1500px;
-    margin: 0 auto;
-    padding: 5rem 2rem 5rem 2rem;
+    position: relative;
+    width: 100vw;
+    min-height: min(100vh, 100vw);
+    display: flex;
+    justify-content: center;
     font-family: "Plus Jakarta Sans", sans-serif;
+}
+
+.faq-inner {
+    width: 100%;
+    max-width: min(131.5vh, 131.5vw);
+    margin: 0 auto;
+    padding: min(7.4vh, 7.4vw) var(--container-padding-x);
 }
 
 .faq-header {
@@ -11,25 +19,31 @@
     flex-direction: column;
     align-items: center;
     text-align: center;
-    margin-bottom: 4.5rem;
+    margin-bottom: min(6.6vh, 6.6vw);
 }
 
 .faq-badge {
     display: inline-flex;
     align-items: center;
-    gap: 0.5rem;
-    padding: 0.5rem 1.35rem;
-    border-radius: 9999px;
-    border: 2px solid var(--color-primary);
+    gap: min(0.75vh, 0.75vw);
+    padding: min(0.75vh, 0.75vw) min(2vh, 2vw);
+    border-radius: var(--radius-pill);
+    border: min(0.18vh, 0.18vw) solid var(--color-primary);
     background-color: transparent;
     color: var(--color-primary);
-    font-size: 1.6rem;
+    font-size: min(2vh, 2vw);
     font-weight: 500;
-    margin-bottom: 1.5rem;
+    margin-bottom: min(2.2vh, 2.2vw);
+}
+
+.faq-badge img {
+    width: min(2.5vh, 2.5vw);
+    height: min(2.5vh, 2.5vw);
+    object-fit: contain;
 }
 
 .faq-header h2 {
-    font-size: clamp(2.2rem, 3.8vw, 3.6rem);
+    font-size: min(5.3vh, 5.3vw);
     font-weight: 600;
     line-height: 1.15;
     letter-spacing: -0.025em;
@@ -47,17 +61,16 @@
 
 .faq-dropdown {
     width: 100%;
-    max-width: 1190px;
     margin: 0 auto;
     display: flex;
     flex-direction: column;
-    gap: 1.2rem;
+    gap: min(1.8vh, 1.8vw);
 }
 
 .faq-item {
-    border: 1.8px solid var(--color-primary);
-    border-radius: 1.5rem;
-    padding: 2.7rem 3.2rem;
+    border: min(0.17vh, 0.17vw) solid var(--color-primary);
+    border-radius: min(2.2vh, 2.2vw);
+    padding: min(3.6vh, 3.6vw) min(4.2vh, 4.2vw);
     background-color: transparent;
     transition: background-color 0.35s ease, border-color 0.35s ease;
 }
@@ -67,7 +80,7 @@
     border-color: transparent;
 }
 
-.faq-item.open>.faq-question {
+.faq-item.open > .faq-question {
     color: var(--color-primary);
 }
 
@@ -78,18 +91,18 @@
     padding: 0;
     text-align: left;
     font-family: inherit;
-    font-size: 1.6rem;
+    font-size: min(2.2vh, 2.2vw);
     font-weight: 500;
     color: #06140c;
     cursor: pointer;
     display: flex;
     justify-content: space-between;
     align-items: center;
-    gap: 1.5rem;
+    gap: min(2.2vh, 2.2vw);
 }
 
 .faq-icon {
-    font-size: 1.4rem;
+    font-size: min(1.95vh, 1.95vw);
     font-weight: 600;
     color: #06140c;
     flex-shrink: 0;
@@ -121,29 +134,76 @@
 
 .faq-divider {
     border: none;
-    height: 1px;
+    height: min(0.12vh, 0.12vw);
     background-color: var(--color-primary);
-    margin: 1.4rem 0;
+    margin: min(2vh, 2vw) 0;
 }
 
 .faq-answer {
     margin: 0;
-    font-size: 1.35rem;
+    font-size: min(1.85vh, 1.85vw);
     line-height: 1.55;
     font-weight: 400;
     color: #06140c;
 }
 
+/* TABLET - MOBILE */
 @media (max-width: 768px) {
+    .faq-section {
+        min-height: auto;
+    }
+
+    .faq-inner {
+        max-width: 100%;
+        padding: min(12vh, 12vw) var(--container-padding-x);
+    }
+
+    .faq-header {
+        margin-bottom: min(9vh, 9vw);
+    }
+
+    .faq-badge {
+        gap: min(1.5vh, 1.5vw);
+        padding: min(1.5vh, 1.5vw) min(4.2vh, 4.2vw);
+        border-width: min(0.4vh, 0.4vw);
+        font-size: min(4.2vh, 4.2vw);
+        margin-bottom: min(4.8vh, 4.8vw);
+    }
+
+    .faq-badge img {
+        width: min(4.8vh, 4.8vw);
+        height: min(4.8vh, 4.8vw);
+    }
+
+    .faq-header h2 {
+        font-size: min(7.8vh, 7.8vw);
+    }
+
+    .faq-dropdown {
+        gap: min(3.6vh, 3.6vw);
+    }
+
     .faq-item {
-        padding: 1.5rem;
+        border-width: min(0.4vh, 0.4vw);
+        border-radius: min(5vh, 5vw);
+        padding: min(5.5vh, 5.5vw);
     }
 
     .faq-question {
-        font-size: 1.3rem;
+        font-size: min(4.5vh, 4.5vw);
+        gap: min(4vh, 4vw);
+    }
+
+    .faq-icon {
+        font-size: min(4vh, 4vw);
+    }
+
+    .faq-divider {
+        height: min(0.28vh, 0.28vw);
+        margin: min(3.8vh, 3.8vw) 0;
     }
 
     .faq-answer {
-        font-size: 1.15rem;
+        font-size: min(3.8vh, 3.8vw);
     }
 }
