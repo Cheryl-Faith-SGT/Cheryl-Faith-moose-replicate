@@ -105,7 +105,7 @@
     background-image: url("/gbox-1.png");
     background-size: cover;
     background-position: center;
-    aspect-ratio: 560 / 560;
+    aspect-ratio: 520 / 560;
 }
 
 .left-visual-wrapper {
@@ -484,7 +484,11 @@
     .left-card-text p,
     .right-card-text p,
     .card-3-text p {
-        font-size: min(3.4vh, 3.4vw);
+        font-size: min(3.2vh, 3.2vw);
+    }
+
+    .card-3-text p{
+        max-width: 88%;
     }
 
     .key-card-3 {
@@ -493,7 +497,13 @@
     }
 
     .card-3-text {
-        max-width: 62%;
+        max-width: 60%;
+        top: min(-1vh, -1vw);
+    }
+
+    .card-3-visual{
+        margin-top: min(-4vh, -4vw);
+        margin-left: min(2vh, 2vw);
     }
 
     .card-3-img-back {
@@ -505,7 +515,7 @@
     }
 
     .key-card-4 {
-        aspect-ratio: 1 / 1.11;
+        aspect-ratio: 1 / 1.21;
         padding: min(7.2vh, 7.2vw);
         gap: min(3vh, 3vw);
     }

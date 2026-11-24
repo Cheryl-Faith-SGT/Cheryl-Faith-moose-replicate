@@ -26,7 +26,7 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
     >
       <body className="min-h-full flex flex-col">
       <div
-          className="top-blur"
+          className="top-blur hidden md:block"
           aria-hidden="true"
           style={{
             position: "fixed",
@@ -45,7 +45,7 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
       />
       <SmoothScroll>{children}</SmoothScroll>
       <div
-          className="bottom-blur"
+          className="bottom-blur hidden md:block"
           aria-hidden="true"
           style={{
             position: "fixed",

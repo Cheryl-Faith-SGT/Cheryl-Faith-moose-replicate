@@ -68,7 +68,7 @@ export default function Landing() {
         // Mobile (< 768px)
         mm.add("(max-width: 767px)", () => {
             gsap.to(phoneWrapperRef.current, {
-                y: () => -Math.min(window.innerHeight, window.innerWidth) * 0.23,
+                y: () => -Math.min(window.innerHeight, window.innerWidth) * 0.2,
                 ease: "none",
                 scrollTrigger: {
                     trigger: phoneWrapperRef.current,

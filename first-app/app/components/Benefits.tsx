@@ -92,13 +92,13 @@ export default function Benefits() {
                         duration: 0.6,
                         ease: "power2.out",
                     });
+
                     gsap.to(cardsWrapperRef.current, {
-                        y: () => -Math.min(window.innerHeight, window.innerWidth) * 0.055,
+                        y: () => -Math.min(window.innerHeight, window.innerWidth) * 0.16,
                         duration: 0.6,
                         ease: "power2.out",
                     });
                 },
-
                 onLeaveBack: () => {
                     gsap.to(headerRef.current, {
                         y: 0,
@@ -118,7 +118,7 @@ export default function Benefits() {
                 scrollTrigger: {
                     trigger: containerRef.current,
                     start: "top top",
-                    end: () => `+=${cards.length * 100}%`,
+                    end: () => `+=${cards.length * 80}%`,
                     pin: true,
                     scrub: true,
                 },

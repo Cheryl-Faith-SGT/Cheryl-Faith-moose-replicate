@@ -22,7 +22,7 @@
         position: relative;
         width: 100%;
         max-width: var(--container-max-width);
-        padding: min(14vh, 14vw) var(--container-padding-x) min(14vh, 14vw);
+        padding: min(46vh, 46vw) var(--container-padding-x) min(14vh, 14vw);
         margin: 0 auto;
         display: flex;
         flex-direction: column;
@@ -48,7 +48,7 @@
     }
 
     .landing-left h1 {
-        font-size: min(11.6vh, 11.6vw);
+        font-size: min(9.6vh, 9.6vw);
         font-weight: 500;
         letter-spacing: -0.025em;
         color: var(--color-dark);
@@ -199,15 +199,16 @@
         z-index: 20;
         display: flex;
         justify-content: center;
-        margin-top: min(6.15vh, 6.15vw);
+        margin-top: min(8.55vh, 8.55vw);
         pointer-events: none;
     }
 
     .landing-phone img {
-        width: min(82vh, 82vw);
+        width: min(67vh, 67vw);
         height: auto;
         object-fit: contain;
-        margin-top: min(2.05vh, 2.05vw);
+        margin-top: min(2.2vh, 2.2vw);
+        translate: min(1vh, 1vw) min(5.2vh, 5.2vw);
     }
 
     .social-box {
